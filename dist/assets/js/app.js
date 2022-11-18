@@ -43,4 +43,44 @@ $(() => {
 		}
 	}
 	galaryOpen();
+
+
+	// слайдер reviews
+	function reviewsSwaiper() {
+		let starts = document.querySelectorAll('.reviews-start-number');
+		let end = document.querySelectorAll('.reviews-end-number');
+		if (starts && end) {
+			const reviewSwip = new Swiper('.reviews-swiper', {
+				navigation: {
+					nextEl: '.reviews-button-next',
+					prevEl: '.reviews-button-prev',
+				},
+				autoHeight: true,
+			});
+
+
+			end.forEach(item => {
+				if (reviewSwip.slides.length < 10) {
+					item.innerHTML = `0${reviewSwip.slides.length}`;
+				} else {
+					item.innerHTML = reviewSwip.slides.length;
+				}
+
+			})
+			reviewSwip.on('slideChange', () => {
+				let curentSlider = ++reviewSwip.realIndex;
+				starts.forEach(item => {
+					console.log(curentSlider)
+					if (curentSlider < 10) {
+						item.innerHTML = `0${curentSlider}`;
+					} else {
+						item.innerHTML = curentSlider;
+					}
+
+				})
+			})
+		}
+	}
+
+	reviewsSwaiper()
 })
