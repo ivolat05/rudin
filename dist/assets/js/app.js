@@ -31,6 +31,17 @@ $(() => {
 			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
+	$('.gallery-open-2').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		mainClass: 'mfp-fade',
+		tLoading: 'Загрузка изоброжения',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+		}
+	});
 	// раскрытие галереи
 	function galaryOpen() {
 		let btn = document.querySelector('.galary-btn');
@@ -83,4 +94,24 @@ $(() => {
 	}
 
 	reviewsSwaiper()
+
+	// clinic slider
+	function clinicSwaiper() {
+		let starts = document.querySelector('.clinic-slaider');
+
+		if (starts) {
+			const reviewSwip = new Swiper('.clinic-slaider', {
+
+
+				initialSlide: 2,
+				centeredSlides: true,
+				centeredSlidesBounds: true,
+				slidesOffsetBefore: 70
+			});
+
+
+		}
+	}
+
+	clinicSwaiper()
 })
