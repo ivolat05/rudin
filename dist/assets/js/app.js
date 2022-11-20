@@ -42,6 +42,51 @@ $(() => {
 			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
 		}
 	});
+	$('.gallery-open-3').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		mainClass: 'mfp-fade',
+		tLoading: 'Загрузка изоброжения',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+		}
+	});
+
+	$('.open-modal').magnificPopup({
+		type: 'inline',
+		mainClass: 'mfp-fade'
+	});
+	$('.video-start').magnificPopup({
+		type: 'inline',
+		mainClass: 'mfp-fade',
+
+		callbacks: {
+			close: function () {
+				let video = document.querySelectorAll('.video-box');
+				video.forEach(item => {
+					item.pause();
+					item.currentTime = 0;
+				})
+			}
+		}
+	});
+
+	// video
+	function video(btnStart) {
+		let btn = document.querySelectorAll(`${btnStart}`);
+		btn.forEach(item => {
+			item.addEventListener('click', () => {
+				let videoId = item.getAttribute('data-video');
+				let videoPlay = document.querySelector(videoId);
+				videoPlay.play();
+			})
+		})
+	}
+	video('.video-start')
+
+
 	// раскрытие галереи
 	function galaryOpen() {
 		let btn = document.querySelector('.galary-btn');
@@ -114,4 +159,22 @@ $(() => {
 	}
 
 	clinicSwaiper()
+
+	//awards слайдер
+
+	function awardsSwaiper() {
+		let starts = document.querySelectorAll('.awards-swaiper');
+		if (starts) {
+			const awardSwip = new Swiper('.awards-swaiper', {
+				navigation: {
+					nextEl: '.awards-button-next',
+					prevEl: '.awards-button-prev',
+				},
+				loop: true,
+				autoHeight: true,
+			});
+		}
+	}
+
+	awardsSwaiper()
 })
