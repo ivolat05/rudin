@@ -178,4 +178,33 @@ $(() => {
 	}
 
 	awardsSwaiper()
+
+
+	function accordion(btnAccordion) {
+		const btn = document.querySelectorAll(`${btnAccordion}`);
+		if (btn) {
+			btn.forEach(item => {
+				if (item.classList.contains('--active')) {
+					const panel = item.nextElementSibling;
+					if (panel.style.maxHeight) {
+						panel.style.maxHeight = null;
+					} else {
+						panel.style.maxHeight = panel.scrollHeight + "px";
+					}
+				}
+
+				item.addEventListener('click', () => {
+					item.classList.toggle("--active");
+					const panel = item.nextElementSibling;
+					if (panel.style.maxHeight) {
+						panel.style.maxHeight = null;
+					} else {
+						panel.style.maxHeight = panel.scrollHeight + "px";
+					}
+				})
+
+			})
+		}
+	}
+	accordion('.accordion-btn');
 })
