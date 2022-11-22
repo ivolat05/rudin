@@ -64,11 +64,10 @@ $(() => {
 
 		callbacks: {
 			close: function () {
-				let video = document.querySelectorAll('.video-box');
-				video.forEach(item => {
-					item.pause();
-					item.currentTime = 0;
-				})
+				let video = document.querySelector('.video-box');
+
+				video.pause();
+				video.currentTime = 0;
 			}
 		}
 	});
@@ -79,8 +78,10 @@ $(() => {
 		btn.forEach(item => {
 			item.addEventListener('click', () => {
 				let videoId = item.getAttribute('data-video');
-				let videoPlay = document.querySelector(videoId);
+				let videoPlay = document.querySelector('.video-box');
+				videoPlay.src = videoId
 				videoPlay.play();
+
 			})
 		})
 	}
