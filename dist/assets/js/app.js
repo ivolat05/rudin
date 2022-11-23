@@ -147,8 +147,6 @@ $(() => {
 
 		if (starts) {
 			const reviewSwip = new Swiper('.clinic-slaider', {
-
-
 				initialSlide: 2,
 				centeredSlides: true,
 				centeredSlidesBounds: true,
@@ -178,6 +176,21 @@ $(() => {
 	}
 
 	awardsSwaiper()
+
+	// recom slaider
+	function recomSwaiper() {
+		let starts = document.querySelectorAll('.recom-slaid');
+		if (starts) {
+			const awardSwip = new Swiper('.recom-slaid', {
+				spaceBetween: 16,
+				autoHeight: true,
+				slidesPerView: 3,
+				slidesPerColumn: 1,
+			});
+		}
+	}
+
+	recomSwaiper()
 
 
 	function accordion(btnAccordion) {
