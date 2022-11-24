@@ -153,8 +153,6 @@ $(() => {
 				centeredSlidesBounds: true,
 				slidesOffsetBefore: 0,
 				breakpoints: {
-
-
 					992: {
 						slidesOffsetBefore: 70,
 					}
@@ -192,8 +190,17 @@ $(() => {
 			const awardSwip = new Swiper('.recom-slaid', {
 				spaceBetween: 16,
 				autoHeight: true,
-				slidesPerView: 3,
+				slidesPerView: 1,
 				slidesPerColumn: 1,
+				breakpoints: {
+					992: {
+						slidesPerView: 3,
+					},
+					708: {
+						slidesPerView: 2,
+					},
+
+				}
 			});
 		}
 	}
