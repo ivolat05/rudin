@@ -113,6 +113,7 @@ $(() => {
 					prevEl: '.reviews-button-prev',
 				},
 				autoHeight: true,
+
 			});
 
 
@@ -150,7 +151,14 @@ $(() => {
 				initialSlide: 2,
 				centeredSlides: true,
 				centeredSlidesBounds: true,
-				slidesOffsetBefore: 70
+				slidesOffsetBefore: 0,
+				breakpoints: {
+
+
+					992: {
+						slidesOffsetBefore: 70,
+					}
+				}
 			});
 
 
@@ -220,4 +228,35 @@ $(() => {
 		}
 	}
 	accordion('.accordion-btn');
+	// menu
+	function menu() {
+		const body = document.querySelector('body');
+		const open = document.querySelector('.header-menu-open');
+		const close = document.querySelector('.header-menu-close');
+		const fon = document.querySelector('.fon');
+		const nav = document.querySelector('.header-nav')
+		open.addEventListener('click', () => {
+			nav.classList.add('--active');
+			fon.classList.add('--active');
+			body.classList.add('--stop');
+		})
+		close.addEventListener('click', () => {
+			nav.classList.remove('--active');
+			fon.classList.remove('--active');
+			body.classList.remove('--stop');
+		})
+		fon.addEventListener('click', () => {
+			nav.classList.remove('--active');
+			fon.classList.remove('--active');
+			body.classList.remove('--stop');
+		})
+		window.addEventListener('resize', () => {
+			if (window.innerWidth >= 992) {
+				nav.classList.remove('--active');
+				fon.classList.remove('--active');
+				body.classList.remove('--stop');
+			}
+		})
+	}
+	menu();
 })
